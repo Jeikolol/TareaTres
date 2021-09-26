@@ -1,0 +1,71 @@
+﻿@page
+@model Tarea_3.Pages.CajeroModel
+@{
+    var mil = 1000;
+    var quinientos = 500;
+    var cien = 100;
+    var alertClass = "";
+
+    if (Model.MontoDispensado > Model.Limite)
+    {
+        alertClass = "danger";
+    }
+    else
+    {
+        alertClass = "success";
+    }
+}
+
+<div class="card">
+    <div class="card-header text-white bg-primary">
+        <label class="form-label h3">Retiro de Banco</label>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="get" class="form-group">
+                    <label class="form-label">Seleccione el Banco del cual desea hacer el retiro:</label>
+                    <select name="banco" class="form-control">
+                        <option value="Banco ABC">Banco ABC</option>
+                        <option value="Banreservas">Banreservas</option>
+                        <option value="BHD">Banco BHD</option>
+                        <option value="Popular">Banco Popular</option>
+                        <option value="Ademi">Banco Ademi</option>
+                    </select>
+                    <input type="number" placeholder="Ingrese el monto a retirar" class="form-control my-3" name="montoSolicitado" />
+                    <input type="submit" value="Retirar" class="btn btn-outline-primary" />
+                </form>
+            </div>
+            <div class="col-md-12">
+                <div class="row d-flex justify-content-center mt-5">
+                    <div class="container  col-6">
+
+                        @if (@Model.NombreBanco != "")
+                        {
+                            <label class="form-label">Nombre del banco: <span class="font-weight-bold">@Model.NombreBanco</span></label>
+
+                            <div class="alert alert-@alertClass" role="alert">
+                                <p>@Model.Mensaje</p>
+                            </div>
+                        }
+
+                        <label class="form-label">Monto disponible en el cajero: 
+                            <span class="font-weight-bold">@Model.MontoDisponible.ToString("C2")</span>
+                        </label>
+                        <label class="form-label">Cantidad de billetes de @mil.ToString("C2") disponibles en el cajero: 
+                            <span class="font-weight-bold">@Model.BilletesMil</span>
+                        </label>
+                        <label class="form-label">Cantidad de billetes de @quinientos.ToString("C2") disponibles en el cajero: 
+                            <span class="font-weight-bold">@Model.BilletesQuinientos</span>
+                        </label>
+                        <label class="form-label">Cantidad de billetes de @cien.ToString("C2") disponibles en el cajero: 
+                            <span class="font-weight-bold">@Model.BilletesCien</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+

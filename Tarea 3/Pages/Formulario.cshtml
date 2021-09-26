@@ -1,0 +1,44 @@
+﻿@page
+@model Tarea_3.Pages.FormularioModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Formulario</h1>
+</div>
+<div class="card">
+    <div class="card-header text-white bg-primary">
+        <label class="form-label">Calculo Prestamo</label>
+    </div>
+    <div class="card-body">
+        <form method="get">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="Monto" class="form-label">Monto</label>
+                    <input asp-for="Monto" type="number" class="form-control" placeholder="Ingrese Monto">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="CantCuotas" class="form-label">Cantidad de Cuotas</label>
+                    <input asp-for="CantCuotas" type="number" class="form-control" placeholder="Ingrese Cuotas">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="InteresAnual" class="form-label">Interes Anual</label>
+                    <div class="input-group">
+                        <input asp-for="InteresAnual" type="number" class="form-control" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">%</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button type="submit" class="btn btn-outline-primary" id="botonCalcular">Calcular</button>
+                </div>
+            </div>
+            <div class="row" id="calculoCuotaMensual">
+                <div class="col-md-12 form-grou text-center">
+                    <label class="form-label">
+                        La Cuota Mensual es: <span class="font-weight-bold">@Model.Cuota</span>
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
